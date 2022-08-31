@@ -36,4 +36,5 @@
   35 => 'Symfony\\Component\\HttpKernel\\Controller\\ErrorController',
   36 => 'Symfony\\Component\\HttpKernel\\Controller\\TraceableArgumentResolver',
   37 => 'Symfony\\Component\\HttpKernel\\Controller\\TraceableControllerResolver',
+  38 => 'Symfony\\Component\\Security\\Http\\Controller\\UserValueResolver',
 );
