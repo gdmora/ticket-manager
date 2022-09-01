@@ -19,8 +19,7 @@ security:
             custom_authenticator: App\Security\LoginFormAuthenticator
             logout:
                 path: app_logout
-                # where to redirect after logout
-                # target: app_any_route
+                target: app_home
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -35,7 +34,7 @@ security:
         - { path: ^/tecnico, roles: ROLE_TECNICO }
         - { path: ^/facturador, roles: ROLE_FACTURADOR}
         - { path: ^/gerente, roles: ROLE_GERENTE}
-        - { path: ^(?!/(login|registrar)), roles: ROLE_USER }
+        - { path: ^(?!/(login|registrar|)), roles: ROLE_USER }
 
 when@test:
     security:
