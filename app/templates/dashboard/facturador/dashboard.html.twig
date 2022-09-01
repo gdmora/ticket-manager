@@ -1,0 +1,50 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="mt-2 inline">
+        <div class="row">
+            <div class="col-md-4">
+                <p class="h3">Dashboard<small class="text-muted"> {{ app.user.email }} </small></p>
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-primary" href="{{ path('app_logout') }}">Cerrar sesión</a>
+            </div>
+        </div>
+        <div class="row">
+            <hr class="solid">
+        </div>
+        <div class="row">
+            <p class="h3">Tickets por facturar</p>
+             <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Técnico</th>
+                    <th scope="col">Solución</th>
+                    <th scope="col">Horas Invertidas</th>
+                    <th scope="col">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tf in tickets_por_facturar %}
+                    <tr>
+                    <th scope="row">{{tf.id}}</th>
+                    <td>{{tf.cliente}}</td>
+                    <td>{{tf.tecnico}}</td>
+                    <td>{{tf.solucion}}</td>
+                    <td>{{tf.horas}}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('app_factura_crear', {'id':tf.id }) }}">Atender</a>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

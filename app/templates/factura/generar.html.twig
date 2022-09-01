@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Generar factura{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="mt-2">
+            <h1 class="h3 mb-3 font-weight-normal">Generar factura</h1>
+            <h2 class="h4 mb-3 font-weight-normal">Usuario: {{ app.user.email }}</h2>
+            {{form_start(form)}}
+            <div class="form-group">
+                {{form_label(form.ticket, 'Ticket')}}
+                {{form_widget(form.ticket, {'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{form_label(form.facturador, 'Facturador')}}
+                {{form_widget(form.facturador, {'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{form_label(form.fecha, 'Fecha')}}
+                {{form_widget(form.fecha, {'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group">
+                {{form_label(form.valor_a_cancelar, 'Valor a cancelar')}}
+                {{form_widget(form.valor_a_cancelar, {'attr':{'class':'form-control'}})}}
+            </div>
+            <div class="form-group text-center">
+                    <button class="btn btn-primary mt-2">Facturar</button>
+            </div>
+            {{form_end(form)}}
+        </div>
+    </div>
+{% endblock %}

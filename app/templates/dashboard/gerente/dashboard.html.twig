@@ -1,0 +1,51 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="mt-2 inline">
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="h3">Dashboard<small class="text-muted"> {{ app.user.email }} </small></p>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-primary" href="{{ path('app_logout') }}">Cerrar sesión</a>
+                </div>
+            </div>
+            <form id="dateFilter" method="GET">
+                <div class="input-group input-daterange">
+                    <input type="date" name="from_date" class="form-control">
+                    <input type="date" name="to_date" class="form-control">
+                    <button class="btn btn-primary" type="submit">Filtrar</button>
+                </div>
+            </form>
+            <div class="row">
+                <hr class="solid">
+            </div>
+            <div class="row">
+                <p class="h3">Facturas</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Facturado por</th>
+                        <th scope="col">Valor a cancelar</th>
+                        <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for f in facturas %}
+                        <tr>
+                        <th scope="row">{{f.id}}</th>
+                        <td>{{f.facturador}}</td>
+                        <td>{{f.getValorACancelar()}}</td>
+                        <td>{{f.fecha|date('d-m-Y')}}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
